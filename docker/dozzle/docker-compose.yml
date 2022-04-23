@@ -4,19 +4,8 @@ services:
     container_name: dozzle
     image: amir20/dozzle:latest
     restart: unless-stopped
-    networks:
-      - traefik_network
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     ports:
       - 9999:8080
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.dozzle.entrypoints=websecure"
-      - "traefik.http.routers.dozzle.rule=Host(`logs.chignole.fr`)"
-      - "traefik.http.routers.dozzle.tls.certresolver=leresolver"
-      - "traefik.http.routers.dozzle.middlewares=authelia@docker"
 
-networks:
-  traefik_network:
-    external: true
