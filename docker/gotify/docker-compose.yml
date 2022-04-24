@@ -1,0 +1,13 @@
+version: '3.7'
+
+services:
+  gotify:
+    image: gotify/server:latest
+    container_name: gotify 
+    restart: unless-stopped
+    ports:
+      - "7180:80"
+    volumes:
+      - /home/raoul/docker/gotify1/config:/app/data
+    environment:
+      - TZ=Europe/Paris

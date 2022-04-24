@@ -1,0 +1,16 @@
+version: '3.7'
+
+services:
+  watchtower:
+    image: containrrr/watchtower:latest
+    container_name: watchtower 
+    restart: unless-stopped 
+    environment:
+      - TZ=Europe/Paris
+      - WATCHTOWER_CLEANUP=true
+      - WATCHTOWER_SCHEDULE="0 0 4 * * *"
+      - WATCHTOWER_NOTIFICATIONS=gotify
+      - WATCHTOWER_NOTIFICATION_GOTIFY_URL="https://notify.chignole.fr"
+      - WATCHTOWER_NOTIFICATION_GOTIFY_TOKEN="AyXtwY3HJPPgoF8"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
